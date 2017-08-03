@@ -95,7 +95,7 @@ class MainWindow(wx.Frame):
         self.Bind(wx.EVT_MENU, self.on_about, about_item)
 
     def init_toolbar(self):
-        toolbar = self.CreateToolBar(style=wx.RIGHT)
+        toolbar = self.CreateToolBar()
         set_tool = toolbar.AddTool(wx.ID_ANY, 'Settings', wx.Bitmap('set.png'))
         toolbar.Realize()
 
