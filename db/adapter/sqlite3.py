@@ -1,27 +1,27 @@
 import sqlite3
 
-class sqlite3Adapter:
+class Sqlite3:
 	"""docstring for sqlite3Adapter
 		
 		now this class is signature influenced in cause of add_row(...) function.
 
 	"""
 	_path = ""
-	_idColumnName =""
+	_idColumnName ="id"
+	_insertFormat = "name, count, price"
 
-	def __init__(self, pathToDb, idColumnName):
+	def __init__(self, pathToDb):
 		self._path = pathToDb
-		self._idColumnName = idColumnName
 
 	def connect(self):
-		self.sqliteConnection = sqlite3.connect(self._path)
-		self.sqliteCursor = self.sqliteConnection.cursor()
+		self.sqlite_connection = sqlite3.connect(self._path)
+		self.sqlite_cursor = self.sqlite_connection.cursor()
 
 	def add_row(self, tableName="", rowArray=[]):
-		self.sqliteCursor.execute("INSERT INTO " + tableName + " (name, count, price) VALUES (" + str(rowArray)[1:-1] + ")")
+		self.sqlite_cursor.execute("INSERT INTO {} ({}) VALUES ({})".format(tableName,self._insertFormat,str(rowArray)[1:-1]))
 
 	def delete(self, tableName="", idArray=[]):
-		self.sqliteCursor.execute("DELETE FROM " + tableName + " WHERE " + self._idColumnName + " IN (" + str(idArray)[1:-1] + ") ")
+		self.sqlite_cursor.execute("DELETE FROM {} WHERE {} IN ({})".format(tableName,self._idColumnName,str(idArray)[1:-1]))
 
 	def decrease(self, idArray=[]):
 		if not idArray:
@@ -40,7 +40,7 @@ class sqlite3Adapter:
 
 
 	def commit(self):
-		self.sqliteConnection.commit()
+		self.sqlite_connection.commit()
 
 	def select_all(self, tableName=""):
-		yield from self.sqliteCursor.execute("SELECT * FROM " + tableName)
+		yield from self.sqlite_cursor.execute("SELECT * FROM {}".format(tableName))

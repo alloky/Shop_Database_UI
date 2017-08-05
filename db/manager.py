@@ -1,7 +1,5 @@
-class dbManager:
+class DbManager:
 	"""Db managment class"""
-	
-	path = ""
 
 	def __init__(self, adapter):
 		self.adapter = adapter
