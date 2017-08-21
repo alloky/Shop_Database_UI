@@ -1,16 +1,30 @@
 # Ignore everything
 *
-/*
 
 # But not these directories...
-!dbmanager
-!ui/
+!db/
+!db/adapter/
+!db/adapter/scripts/
+!db/adapter/scripts/sqlite/
+
+!gui/
+!gui/icon/
+!gui/locale/
+
+!model/
+!model/constants
+
+!screenshots/
 
 # And not these files...
 !.gitignore
-!db.py
-!test.py
-!dbmanager/*.py
-!ui/*.py
+
+!*.py
+!*.sql
+!gui/icon/*.png
+
+!README.md
+!screenshots/*.png
 
 # But definitely these...
+.DS_Store
