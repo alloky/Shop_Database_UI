@@ -31,9 +31,9 @@ class CustomerTab(DbPanel):
 
         try:
             self.shop.delete_from('customers', [select.id])
+            self.db_list.RemoveObject(select)
         except ex.DbException as e:
             error_message(self, exception=e)
-        self.db_list.RemoveObject(select)
 
     def _on_add(self, e):
         with AddDialog(self, locale.NEW_CUSTOMER, storage['customers'],

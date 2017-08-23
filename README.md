@@ -67,5 +67,5 @@ Just run `main.py` and enjoy!
 
 ## Authors
 
-* Konstantin Chernis - Frontend - @konarkcher
-* Vitaliy Ivanin - Backend - @alloky
+* **Konstantin Chernis** - *Frontend* - [konarkcher](https://github.com/konarkcher)
+* **Vitaliy Ivanin** - *Backend* - [alloky](https://github.com/alloky)
